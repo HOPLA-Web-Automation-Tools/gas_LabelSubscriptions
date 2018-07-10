@@ -16,7 +16,7 @@ function doGet(e){
     deleteAllTriggers()
     
 //    ScriptApp.newTrigger("markSubscription").timeBased().everyMinutes(frequency).create();    
-    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).create();    
+    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).everyDays(1).create();    
     var content = "<p>"+scriptName+" has been installed on your email " + user_email + ". "
     +'<p>It will:</p>'
     +'<ul style="list-style-type:disc">'
@@ -42,7 +42,7 @@ function doGet(e){
     deleteAllTriggers()
     
     if (e.parameter.status == "enabled"){
-      ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).create();      
+      ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).everyDays(1).create();      
     }
     return ContentService.createTextOutput("settings has been saved.");
     
@@ -110,7 +110,7 @@ function doGet(e){
     +'<p>You can change these settings by clicking the WAT Suite extension icon or WAT Settings on gmail.</p>';
 
 
-    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).create();    
+    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).everyDays(1).create();    
     
     var HTMLOutput = HtmlService.createHtmlOutput();
     HTMLOutput.append(style);
