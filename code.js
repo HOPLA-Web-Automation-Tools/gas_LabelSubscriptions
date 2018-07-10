@@ -54,7 +54,7 @@ function doGet(e){
   else if (e.parameter.labelSubscriptions_enable){ //ENABLE
     userProperties.setProperty("status","enabled");
     deleteAllTriggers();
-    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).create();
+    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).everyDays(1).create();
     return ContentService.createTextOutput("Triggers has been enabled.");
   }
   else if (e.parameter.labelSubscriptions_disable){ //DISABLE
