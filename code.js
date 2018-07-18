@@ -22,7 +22,7 @@ function doGet(e){
     +'<ul style="list-style-type:disc">'
     +'<li>Move incoming emails with unsubscribe link from inbox to "Subscriptions" label.</li>'    
     +'</ul>'
-    +'<p>You can change these settings by clicking the WAT Suite extension icon or WAT Settings on gmail.</p>';
+    +'<p>You can change these settings by clicking the HOPLA Tools extension icon or HOPLA Tools Settings on gmail.</p>';
     
     return HtmlService.createHtmlOutput(content);
   }
@@ -107,7 +107,7 @@ function doGet(e){
     +'<ul style="list-style-type:disc">'
     +'<li>Move incoming emails with unsubscribe link from inbox to "Subscriptions" label.</li>'    
     +'</ul>'
-    +'<p>You can change these settings by clicking the WAT Suite extension icon or WAT Settings on gmail.</p>';
+    +'<p>You can change these settings by clicking the HOPLA Tools extension icon or HOPLA Tools Settings on gmail.</p>';
 
 
     ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).everyDays(1).create();    
