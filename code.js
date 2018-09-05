@@ -15,8 +15,8 @@ function doGet(e){
   if (e.parameter.setup){ //SETUP    
     deleteAllTriggers()
     
-//    ScriptApp.newTrigger("markSubscription").timeBased().everyMinutes(frequency).create();    
-    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).everyDays(1).create();    
+
+//    ScriptApp.newTrigger("markSubscription").timeBased().atHour(frequency).everyDays(1).create();    
     var content = "<p>"+scriptName+" has been installed on your email " + user_email + ". "
     +'<p>It will:</p>'
     +'<ul style="list-style-type:disc">'
