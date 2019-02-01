@@ -8,10 +8,22 @@ var script_status = userProperties.getProperty("status") || 'disabled';
 var SubscriptionThreads = [];
 var user_email = Session.getEffectiveUser().getEmail();
 
+global.doGet = doGet;
+global.test = test;
+global.deleteAllTriggers = deleteAllTriggers;
+global.markSubscription = markSubscription;
+global.regex_subscription = regex_subscription;
+global.markLabel = markLabel;
+global.archive = archive;
+global.threadHasLabel = threadHasLabel;
+global.isMe = isMe;
+global.getEmailAddresses = getEmailAddresses;
+global.getLabel = getLabel;
+
 function test() {
   markSubscription();
 }
-global.doGet = doGet;
+
 function doGet(e) {
   if (e.parameter.setup) { // SETUP
     deleteAllTriggers();
@@ -112,7 +124,6 @@ function doGet(e) {
     return HTMLOutput;
   }
 }
-
 
 function deleteAllTriggers() {
   // DELETE ALL TRIGGERS
