@@ -54,7 +54,11 @@ function doGet(e) {
     deleteAllTriggers();
 
     if (oSave.status === "enabled") {
-      ScriptApp.newTrigger("markSubscription").timeBased().everyMinutes(frequency).everyDays(1).create();
+      if (frequency === 60) {
+        ScriptApp.newTrigger("markSubscription").timeBased().everyHours(1).everyDays(1).create();
+      } else {
+        ScriptApp.newTrigger("markSubscription").timeBased().everyMinutes(frequency).everyDays(1).create();
+      }
     }
     return ContentService.createTextOutput("settings has been saved.");
   } else if (e.parameter.labelSubscriptions_trigger) { // DO IT NOW
