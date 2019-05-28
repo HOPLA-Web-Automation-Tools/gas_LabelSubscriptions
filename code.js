@@ -54,8 +54,8 @@ function doGet(e) {
     deleteAllTriggers();
 
     if (oSave.status === "enabled") {
-      if (frequency === 60) {
-        ScriptApp.newTrigger("markSubscription").timeBased().everyHours(1).everyDays(1).create();
+      if (parseInt(frequency, 10) === 60) {
+        ScriptApp.newTrigger("markSubscription").timeBased().everyHours(1).create();
       } else {
         ScriptApp.newTrigger("markSubscription").timeBased().everyMinutes(frequency).everyDays(1).create();
       }
@@ -77,18 +77,13 @@ function doGet(e) {
     var label_subscriptions = userProperties.getProperty("label_subscriptions") || "Subscriptions";
     frequency = userProperties.getProperty("frequency") || 1;
     newerthan = userProperties.getProperty("newerthan") || 5;
-    status = userProperties.getProperty("status") || 'enabled';
+    // var status = userProperties.getProperty("status") || 'enabled';
     var triggers = ScriptApp.getProjectTriggers();
-    var status;
-    if (triggers.length !== 2) {
-      status = 'disabled';
-    } else {
-      status = 'enabled';
-    }
+    var status = triggers.length > 0 ? 'enabled' : 'disabled';
     var resjson = {
       'label_subscriptions': label_subscriptions,
-      'frequency': frequency,
-      'newerthan': newerthan,
+      'frequency': parseInt(frequency, 10),
+      'newerthan': parseInt(newerthan, 10),
       'status': status
     };
     return ContentService.createTextOutput(JSON.stringify(resjson));
